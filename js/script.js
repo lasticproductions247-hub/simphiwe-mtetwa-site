@@ -4285,3 +4285,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 })();
 
+/* ===== Site Loader ===== */
+(function () {
+    var loader = document.getElementById('site-loader');
+    if (!loader) return;
+
+    var hidden = false;
+    function hide() {
+        if (hidden) return;
+        hidden = true;
+        loader.classList.add('is-hidden');
+    }
+
+    if (document.readyState === 'complete') {
+        hide();
+        return;
+    }
+
+    // Fade out only once everything (images, fonts, embeds) has finished loading,
+    // then give the first paint a moment to settle.
+    window.addEventListener('load', function () {
+        setTimeout(hide, 450);
+    });
+
+    // Safety net: never let a hung third-party image block the site.
+    setTimeout(hide, 6000);
+})();
+
