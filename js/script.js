@@ -1,4 +1,4 @@
-window.tailwind = window.tailwind || {};
+﻿window.tailwind = window.tailwind || {};
 var tailwind = window.tailwind;
 
 /* Webinar single-page routing */
@@ -264,7 +264,7 @@ tailwind.config = {
                 "on-tertiary-container": "#848484",
                 "on-secondary": "#ffffff",
                 "surface": "#f9f9f9",
-                "secondary-container": "#f5a632",
+                "secondary-container": "#c8f328",
                 "on-primary-container": "#848484",
                 "surface-container-highest": "#e2e2e2",
                 "inverse-primary": "#c6c6c6",
@@ -288,7 +288,7 @@ tailwind.config = {
                 "surface-container": "#eeeeee",
                 "outline": "#7e7576",
                 "on-error": "#ffffff",
-                "secondary-fixed": "#f5a632",
+                "secondary-fixed": "#c8f328",
                 "primary-container": "#1b1b1b",
                 "secondary-fixed-dim": "#add500",
                 "surface-tint": "#5e5e5e",
@@ -297,7 +297,7 @@ tailwind.config = {
                 "on-surface": "#1b1b1b",
                 "tertiary-fixed-dim": "#c6c6c6",
                 "surface-dim": "#dadada",
-                "secondary": "#f5a632",
+                "secondary": "#526600",
                 "on-tertiary-fixed": "#1b1b1b",
                 "on-tertiary": "#ffffff",
                 "inverse-on-surface": "#f1f1f1",
@@ -346,7 +346,7 @@ tailwind.config = {
                 "on-tertiary-container": "#848484",
                 "on-secondary": "#ffffff",
                 "surface": "#f9f9f9",
-                "secondary-container": "#f5a632",
+                "secondary-container": "#c8f328",
                 "on-primary-container": "#848484",
                 "surface-container-highest": "#e2e2e2",
                 "inverse-primary": "#c6c6c6",
@@ -370,7 +370,7 @@ tailwind.config = {
                 "surface-container": "#eeeeee",
                 "outline": "#7e7576",
                 "on-error": "#ffffff",
-                "secondary-fixed": "#f5a632",
+                "secondary-fixed": "#c8f328",
                 "primary-container": "#1b1b1b",
                 "secondary-fixed-dim": "#add500",
                 "surface-tint": "#5e5e5e",
@@ -379,7 +379,7 @@ tailwind.config = {
                 "on-surface": "#1b1b1b",
                 "tertiary-fixed-dim": "#c6c6c6",
                 "surface-dim": "#dadada",
-                "secondary": "#f5a632",
+                "secondary": "#526600",
                 "on-tertiary-fixed": "#1b1b1b",
                 "on-tertiary": "#ffffff",
                 "inverse-on-surface": "#f1f1f1",
@@ -416,78 +416,6 @@ tailwind.config = {
     }
 }
 
-/* Inline script block 3 */
-const spot2Slider = document.getElementById('spot2HeroSlider');
-const spot2Slides = document.querySelectorAll('.spot2-hero-slide');
-const spot2Dots = document.querySelectorAll('.spot2-slider-dot');
-const spot2ProgressBar = document.getElementById('spot2ProgressBar');
-const spot2CurrentSlideEl = document.getElementById('spot2CurrentSlide');
-let spot2CurrentIndex = 0;
-const spot2TotalSlides = spot2Slides.length;
-const spot2AutoPlayDelay = 6000;
-let spot2AutoPlayTimer;
-let spot2ProgressTimer;
-let spot2Progress = 0;
-function spot2UpdateSlider() {
-    spot2Slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === spot2CurrentIndex);
-    });
-    spot2Dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === spot2CurrentIndex);
-    });
-    spot2CurrentSlideEl.textContent = String(spot2CurrentIndex + 1).padStart(2, '0');
-    spot2ResetProgress();
-}
-function spot2NextSlide() {
-    spot2CurrentIndex = (spot2CurrentIndex + 1) % spot2TotalSlides;
-    spot2UpdateSlider();
-}
-function spot2PrevSlide() {
-    spot2CurrentIndex = (spot2CurrentIndex - 1 + spot2TotalSlides) % spot2TotalSlides;
-    spot2UpdateSlider();
-}
-function spot2GoToSlide(index) {
-    spot2CurrentIndex = index;
-    spot2UpdateSlider();
-    spot2ResetAutoPlay();
-}
-function spot2ResetProgress() {
-    spot2Progress = 0;
-    spot2ProgressBar.style.width = '0%';
-    clearInterval(spot2ProgressTimer);
-    spot2ProgressTimer = setInterval(() => {
-        spot2Progress += 100 / (spot2AutoPlayDelay / 50);
-        spot2ProgressBar.style.width = Math.min(spot2Progress, 100) + '%';
-    }, 50);
-}
-function spot2ResetAutoPlay() {
-    clearInterval(spot2AutoPlayTimer);
-    spot2AutoPlayTimer = setInterval(spot2NextSlide, spot2AutoPlayDelay);
-    spot2ResetProgress();
-}
-let spot2TouchStartX = 0;
-let spot2TouchEndX = 0;
-spot2Slider.addEventListener('touchstart', e => {
-    spot2TouchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-spot2Slider.addEventListener('touchend', e => {
-    spot2TouchEndX = e.changedTouches[0].screenX;
-    const diff = spot2TouchStartX - spot2TouchEndX;
-    if (Math.abs(diff) > 50) {
-        if (diff > 0) spot2NextSlide();
-        else spot2PrevSlide();
-        spot2ResetAutoPlay();
-    }
-}, { passive: true });
-document.addEventListener('keydown', function spot2HandleKeydown(e) {
-    if (document.getElementById('page-spotlight2').style.display !== 'block') return;
-    if (e.key === 'ArrowRight') { spot2NextSlide(); spot2ResetAutoPlay(); }
-    if (e.key === 'ArrowLeft') { spot2PrevSlide(); spot2ResetAutoPlay(); }
-});
-spot2Slider.addEventListener('mouseenter', () => clearInterval(spot2AutoPlayTimer));
-spot2Slider.addEventListener('mouseleave', spot2ResetAutoPlay);
-spot2ResetAutoPlay();
-
 /* Inline script block 4 */
 tailwind.config = {
     darkMode: "class",
@@ -495,7 +423,7 @@ tailwind.config = {
         extend: {
             "colors": {
                 "tertiary-fixed": "#e1e3e4",
-                "secondary": "#f5a632",
+                "secondary": "#526600",
                 "inverse-primary": "#c8c6c5",
                 "surface-variant": "#e4e2e2",
                 "surface-container": "#efeded",
@@ -525,8 +453,8 @@ tailwind.config = {
                 "error": "#ba1a1a",
                 "on-secondary": "#ffffff",
                 "surface-bright": "#fbf9f8",
-                "secondary-fixed": "#f5a632",
-                "secondary-container": "#f5a632",
+                "secondary-fixed": "#c8f328",
+                "secondary-container": "#c8f328",
                 "on-primary-fixed": "#1c1b1b",
                 "error-container": "#ffdad6",
                 "on-surface": "#1b1c1c",
@@ -536,7 +464,7 @@ tailwind.config = {
                 "on-tertiary-fixed": "#191c1d",
                 "outline": "#747878",
                 "surface-tint": "#5f5e5e",
-                "secondary-fixed-dim": "#f5a632",
+                "secondary-fixed-dim": "#aed500",
                 "tertiary-container": "#191c1d",
                 "inverse-on-surface": "#f2f0f0",
                 "on-secondary-fixed": "#171e00",
@@ -708,10 +636,30 @@ function initializeMatterDflip() {
     });
     if (!anyBook) return;
 
+            function isDflipBookErrored(host) {
+        // DearFlip writes a CROSS ORIGIN / Cannot access file / Failed to fetch
+        // notice into .df-loading-info when the PDF can't be fetched (e.g. when
+        // served from a different origin such as file:// or another domain).
+        var info = host.querySelector('.df-loading-info');
+        if (info && /cannot access file|cross origin|failed to fetch/i.test(info.textContent || '')) {
+            return true;
+        }
+        return false;
+    }
+
     function markReady() {
         let allReady = true;
         hosts.forEach(function (host) {
             if (host.dataset.status === 'ready') return;
+            if (host.dataset.status === 'fallback') return;
+            if (isDflipBookErrored(host)) {
+                host.dataset.status = 'fallback';
+                var book = host.querySelector('._df_book');
+                if (book) book.hidden = true;
+                host.querySelectorAll('.matter-dflip-direct-link').forEach(function (a) { a.style.display = 'inline-flex'; });
+                host.hidden = false;
+                return;
+            }
             const pluginBook = host.querySelector('._df_book');
             const viewer = pluginBook && pluginBook.querySelector('.df-container');
             if (viewer) {
@@ -753,13 +701,14 @@ function initializeMatterDflip() {
     });
     hosts.forEach(function (host) { matterDflipObserver.observe(host, { childList: true, subtree: true }); });
 
-    clearTimeout(matterDflipFallbackTimer);
+        clearTimeout(matterDflipFallbackTimer);
     matterDflipFallbackTimer = setTimeout(function () {
         if (markReady()) return;
         hosts.forEach(function (host) {
-            if (host.dataset.status !== 'ready') {
+            if (host.dataset.status !== 'ready' && host.dataset.status !== 'fallback') {
                 host.hidden = true;
                 host.dataset.status = 'fallback';
+                host.querySelectorAll('.matter-dflip-direct-link').forEach(function (a) { a.style.display = 'inline-flex'; });
             }
         });
     }, 9000);
@@ -803,12 +752,18 @@ function matterDflipNext() {
     if (g.next) { g.next.click(); setTimeout(updateMatterDflipIndicator, 60); }
 }
 (function initMatterDflipControls() {
+    // Custom page-swipe controls removed from the Matter book markup — bail out cleanly.
+    if (!document.getElementById('matterDflipControls')) return;
     var started = false;
     var poll = setInterval(function () {
         var g = getMatterDflipControls();
-        if (!g.prev && !g.next) return;
+        var host = document.getElementById('matterCurrentDflip');
+        var ctrls = document.getElementById('matterDflipControls');
+        if (!host || !ctrls) { clearInterval(poll); return; }
+        var viewer = host.querySelector('.df-container, .df-viewer-container');
+        if (!viewer) return;
         if (!started) { started = true; updateMatterDflipIndicator(); }
-        if (document.getElementById('matterCtrlPrev')) { clearInterval(poll); }
+        if (ctrls) { clearInterval(poll); }
     }, 250);
     setTimeout(function () { clearInterval(poll); }, 30000);
 })();
@@ -947,7 +902,7 @@ updateControls();
         });
     });
 
-        startMatterHeroSlider();
+    startMatterHeroSlider();
 })();
 
 /* Page Flip Book for Previous Issues featured edition */
@@ -1120,8 +1075,8 @@ updateHeaderState();
 // =============================================
 // NEW HERO CAROUSEL
 // =============================================
-const heroSlides = document.querySelectorAll('.hero__slide');
-const navItems = document.querySelectorAll('.hero__nav-item');
+let heroSlides = document.querySelectorAll('.hero__slide');
+let navItems = document.querySelectorAll('.hero__nav-item');
 let currentSlide = 0;
 let slideTimer;
 let progressStart = Date.now();
@@ -1153,14 +1108,149 @@ const updateProgress = () => {
     animationFrame = requestAnimationFrame(updateProgress);
 };
 
-navItems.forEach((item, idx) => {
-    item.addEventListener('click', () => heroGoToSlide(idx));
-});
+const initHeroCarousel = () => {
+    heroSlides = document.querySelectorAll('.hero__slide');
+    navItems = document.querySelectorAll('.hero__nav-item');
 
-if (heroSlides.length > 0) {
-    heroGoToSlide(0);
-    updateProgress();
-}
+    clearInterval(slideTimer);
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+
+    navItems.forEach((item, idx) => {
+        item.addEventListener('click', () => heroGoToSlide(idx));
+    });
+
+    if (heroSlides.length > 0) {
+        heroGoToSlide(0);
+        updateProgress();
+    }
+};
+
+initHeroCarousel();
+
+// =============================================
+// HERO SLIDES FROM WORDPRESS (latest 4 insights)
+// =============================================
+(function () {
+    'use strict';
+
+    const carousel = document.querySelector('[data-hero-endpoint]');
+    if (!carousel) return;
+
+    const endpoint = carousel.dataset.heroEndpoint;
+    if (!endpoint) return;
+
+    const buildSlide = (item, index) => {
+        const title = item.title || 'Untitled Insight';
+
+        const slide = document.createElement('div');
+        slide.className = 'hero__slide' + (index === 0 ? ' active' : '');
+        slide.dataset.index = index;
+
+        const imageWrap = document.createElement('div');
+        imageWrap.className = 'hero__image';
+
+        const img = document.createElement('img');
+        img.src = item.image || '';
+        img.alt = title;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        imageWrap.appendChild(img);
+
+        const overlay = document.createElement('div');
+        overlay.className = 'hero__overlay';
+        imageWrap.appendChild(overlay);
+
+        const textContent = document.createElement('div');
+        textContent.className = 'hero__text-content';
+
+        const tag = document.createElement('p');
+        tag.className = 'hero__tag';
+        tag.textContent = item.type || 'Insight';
+
+        const heading = document.createElement('h2');
+        heading.className = 'hero__title';
+        heading.appendChild(document.createTextNode(title));
+
+        const excerpt = document.createElement('p');
+        excerpt.textContent = item.excerpt || 'Read the latest perspective from Simphiwe Mtetwa.';
+
+        const cta = document.createElement('a');
+        cta.className = 'hero__cta';
+        cta.href = item.url || '#';
+        cta.style.textDecoration = 'none';
+        cta.style.color = 'inherit';
+        cta.style.cursor = 'pointer';
+        cta.appendChild(document.createTextNode('Read Insight '));
+
+        const arrow = document.createElement('i');
+        arrow.className = 'fas fa-arrow-right';
+        arrow.setAttribute('aria-hidden', 'true');
+        cta.appendChild(arrow);
+
+        textContent.append(tag, heading, excerpt, cta);
+        slide.append(imageWrap, textContent);
+        return slide;
+    };
+
+    const buildNav = (item, index) => {
+        const button = document.createElement('button');
+        button.className = 'hero__nav-item' + (index === 0 ? ' active' : '');
+        button.type = 'button';
+        button.dataset.index = index;
+
+        const label = document.createElement('span');
+        label.className = 'nav-text';
+        label.textContent = (item.title || item.type || 'Insight').slice(0, 32);
+
+        const line = document.createElement('span');
+        line.className = 'nav-line';
+        const progress = document.createElement('span');
+        progress.className = 'nav-progress';
+        progress.style.width = '0%';
+        line.appendChild(progress);
+
+        button.append(label, line);
+        return button;
+    };
+
+    const renderHero = (items) => {
+        const top = items.slice(0, 4);
+        if (!top.length) return;
+
+        carousel.replaceChildren(...top.map(buildSlide));
+
+        const navWrap = document.querySelector('[data-carousel-nav]');
+        if (navWrap) navWrap.replaceChildren(...top.map(buildNav));
+
+        carousel.classList.remove('hero-carousel-pending');
+        initHeroCarousel();
+    };
+
+    const revealStatic = () => {
+        carousel.classList.remove('hero-carousel-pending');
+    };
+
+    fetch(endpoint, {
+        credentials: 'same-origin',
+        headers: { Accept: 'application/json' }
+    })
+        .then(response => {
+            if (!response.ok) throw new Error(`Hero request failed: ${response.status}`);
+            return response.json();
+        })
+        .then(payload => {
+            const items = Array.isArray(payload) ? payload : payload.items;
+            if (!Array.isArray(items) || items.length === 0) {
+                revealStatic();
+                return;
+            }
+            renderHero(items);
+        })
+        .catch(error => {
+            console.error('Unable to load hero slides.', error);
+            revealStatic();
+        });
+})();
 
 // Scroll indicator - auto-scroll to bottom with play/pause
 const scrollIndicator = document.getElementById('scrollToNextSection');
@@ -1436,7 +1526,8 @@ megaRailItems.forEach(item => {
         if (item.dataset.section === 'home') return;
         e.preventDefault();
         const section = item.dataset.section;
-        const link = megaMenu.querySelector(`.mega-menu__panel-section[data-panel="${section}"] .mega-menu__link`);
+        const link = megaMenu.querySelector(`.mega-menu__panel-section[data-panel="${section}"] a.mega-menu__panel-header`)
+            || megaMenu.querySelector(`.mega-menu__panel-section[data-panel="${section}"] .mega-menu__link`);
         if (link) link.click();
         megaMenu.classList.remove('mega-open');
     });
@@ -1519,9 +1610,9 @@ document.querySelectorAll('.mega-menu__panel-section[data-panel="expertise"] .me
             ? executiveCouncilFeatured
             : link.getAttribute('href') === '#page-expertise-events'
                 ? eventsFeatured
-            : link.getAttribute('href') === '#page-expertise-advisory'
-                ? advisoryFeatured
-                : expertiseFeaturedDefaults;
+                : link.getAttribute('href') === '#page-expertise-advisory'
+                    ? advisoryFeatured
+                    : expertiseFeaturedDefaults;
         updateExpertiseFeaturedLinks(content);
     });
 });
@@ -1830,6 +1921,9 @@ function stopSectionVideo() {
 // CONTACT ROUTING
 // =============================================
 window.showContactPage = function () {
+    if (window.location.hash !== '#page-contact') {
+        history.pushState(null, '', '#page-contact');
+    }
     const mainContent = document.querySelector('main');
     const contactPage = document.getElementById('page-contact');
     const footers = document.querySelectorAll('.main-footer');
@@ -1948,12 +2042,10 @@ window.addEventListener('hashchange', () => {
         showRecentNewsPage();
     } else if (hash === '#page-contact') {
         showContactPage();
+    } else if (hash === '#page-programs') {
+        showProgramsPage();
     } else if (hash === '#page-spotlight') {
         showSpotlightPage('page-spotlight');
-    } else if (hash === '#page-spotlight2') {
-        showSpotlightPage('page-spotlight2');
-    } else if (hash === '#page-spotlight3') {
-        showSpotlightPage('page-spotlight3');
     } else if (hash === '#page-csi-indaba') {
         showCSIIndabaPage();
     } else if (hash === '#page-csi-awards') {
@@ -1998,6 +2090,8 @@ window.addEventListener('hashchange', () => {
         showExpertiseAdvisoryPage();
     } else if (hash === '#page-expertise-research') {
         showExpertiseResearchPage();
+    } else if (hash === '#page-template') {
+        showTemplatePage();
     } else if (hash === '#page-social-responsibility') {
         showSocialResponsibilityPage();
     } else if (hash === '#page-about') {
@@ -2230,6 +2324,9 @@ window.showCommunitiesPage = function (pageId) {
 };
 
 window.showTeamPage = function () {
+    if (window.location.hash !== '#page-team') {
+        history.pushState(null, '', '#page-team');
+    }
     const mainContent = document.querySelector('main');
     const teamPage = document.getElementById('page-team');
     const footers = document.querySelectorAll('.main-footer');
@@ -2249,6 +2346,9 @@ window.showTeamPage = function () {
 };
 
 window.showHistoryPage = function () {
+    if (window.location.hash !== '#page-history') {
+        history.pushState(null, '', '#page-history');
+    }
     const mainContent = document.querySelector('main');
     const historyPage = document.getElementById('page-history');
     const footers = document.querySelectorAll('.main-footer');
@@ -2385,6 +2485,27 @@ window.showExpertiseAdvisoryPage = function () {
     document.title = 'Advisory Expertise - Simphiwe Mtetwa';
 };
 
+window.showTemplatePage = function () {
+    if (window.location.hash !== '#page-template') {
+        history.pushState(null, '', '#page-template');
+    }
+    const mainContent = document.querySelector('main');
+    const page = document.getElementById('page-template');
+    const footers = document.querySelectorAll('.main-footer');
+    const impactSection = document.getElementById('impactSection');
+    const newsletterSection = document.querySelectorAll('.newsletter-section');
+    const recentNewsSection = document.querySelectorAll('.footer-news-section');
+    document.querySelectorAll('[id^="page-"], [id^="podcast-"], [id^="article-"], [id^="webinar-01-detail"], [id^="webinar-02-detail"]').forEach(el => el.style.display = 'none');
+    if (mainContent) mainContent.style.display = 'none';
+    footers.forEach(f => f.style.display = 'block');
+    if (impactSection) impactSection.style.display = 'block';
+    newsletterSection.forEach(s => s.style.display = 'block');
+    recentNewsSection.forEach(s => s.style.display = 'block');
+    if (page) page.style.display = 'block';
+    window.scrollTo(0, 0);
+    document.title = 'Template - Simphiwe Mtetwa';
+};
+
 window.showExpertiseResearchPage = function () {
     if (window.location.hash !== '#page-expertise-research') {
         history.pushState(null, '', '#page-expertise-research');
@@ -2486,6 +2607,28 @@ window.showMatterMagazinePage = function () {
     document.title = 'Matter Magazine - Simphiwe Mtetwa';
 };
 
+window.showProgramsPage = function () {
+    if (window.location.hash !== '#page-programs') {
+        history.pushState(null, '', '#page-programs');
+    }
+    const mainContent = document.querySelector('main');
+    const programsPage = document.getElementById('page-programs');
+    const footers = document.querySelectorAll('.main-footer');
+    const impactSection = document.getElementById('impactSection');
+    const newsletterSection = document.querySelectorAll('.newsletter-section');
+    const recentNewsSection = document.querySelectorAll('.footer-news-section');
+
+    document.querySelectorAll('[id^="page-"], [id^="podcast-"], [id^="article-"], [id^="webinar-01-detail"], [id^="webinar-02-detail"]').forEach(el => el.style.display = 'none');
+    if (mainContent) mainContent.style.display = 'none';
+    footers.forEach(f => f.style.display = 'block');
+    if (impactSection) impactSection.style.display = 'block';
+    newsletterSection.forEach(s => s.style.display = 'block');
+    recentNewsSection.forEach(s => s.style.display = 'block');
+    if (programsPage) programsPage.style.display = 'block';
+    window.scrollTo(0, 0);
+    document.title = 'Programmes - Simphiwe Mtetwa';
+};
+
 window.showWebinarsPage = function () {
     if (window.location.hash !== '#page-webinars') {
         history.pushState(null, '', '#page-webinars');
@@ -2572,76 +2715,10 @@ function showOfferingTab(tabId) {
     document.getElementById('offering-tab-' + tabId).classList.add('active');
 }
 
-function showSpotlightV4Page() {
-    const mainContent = document.querySelector('main');
-    const spotlightV4Page = document.getElementById('page-spotlight-v4');
-    const footers = document.querySelectorAll('.main-footer');
-    const impactSection = document.getElementById('impactSection');
-    const newsletterSection = document.querySelectorAll('.newsletter-section');
-    const recentNewsSection = document.querySelectorAll('.footer-news-section');
-
-    document.querySelectorAll('[id^="page-"], [id^="podcast-"], [id^="article-"], [id^="webinar-01-detail"], [id^="webinar-02-detail"]').forEach(el => el.style.display = 'none');
-    if (mainContent) mainContent.style.display = 'none';
-    footers.forEach(f => f.style.display = 'block');
-    if (impactSection) impactSection.style.display = 'none';
-    newsletterSection.forEach(s => s.style.display = 'none');
-    recentNewsSection.forEach(s => s.style.display = 'none');
-    if (spotlightV4Page) spotlightV4Page.style.display = 'block';
-    window.scrollTo(0, 0);
-    document.title = 'Spotlight V4 - Simphiwe Mtetwa';
-    setTimeout(initSliderV4, 100);
-}
-
-// Spotlight V4 Slider Functions
-let currentSlideV4 = 0;
-let autoPlayIntervalV4;
-
-function showSlideV4(index) {
-    const slides = document.querySelectorAll('#page-spotlight-v4 .hero-slide');
-    const indicators = document.querySelectorAll('#page-spotlight-v4 .slide-indicator');
-    const totalSlides = slides.length;
-
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-    });
-    indicators.forEach((ind, i) => {
-        ind.classList.toggle('active', i === index);
-    });
-    currentSlideV4 = index;
-}
-
-function nextSlideV4() {
-    const slides = document.querySelectorAll('#page-spotlight-v4 .hero-slide');
-    const totalSlides = slides.length;
-    showSlideV4((currentSlideV4 + 1) % totalSlides);
-}
-
-function prevSlideV4() {
-    const slides = document.querySelectorAll('#page-spotlight-v4 .hero-slide');
-    const totalSlides = slides.length;
-    showSlideV4((currentSlideV4 - 1 + totalSlides) % totalSlides);
-}
-
-function goToSlideV4(index) {
-    showSlideV4(index);
-    resetAutoPlayV4();
-}
-
-function resetAutoPlayV4() {
-    clearInterval(autoPlayIntervalV4);
-    autoPlayIntervalV4 = setInterval(nextSlideV4, 6000);
-}
-
-function initSliderV4() {
-    resetAutoPlayV4();
-    const slider = document.getElementById('hero-slider-v4');
-    if (slider) {
-        slider.addEventListener('mouseenter', () => clearInterval(autoPlayIntervalV4));
-        slider.addEventListener('mouseleave', resetAutoPlayV4);
-    }
-}
-
 function showAboutPage() {
+    if (window.location.hash !== '#page-about') {
+        history.pushState(null, '', '#page-about');
+    }
     const mainContent = document.querySelector('main');
     const aboutPage = document.getElementById('page-about');
     const footers = document.querySelectorAll('.main-footer');
@@ -3667,10 +3744,6 @@ if (hash === '#page-contact') {
     showWebinarDetail('webinar-02-detail');
 } else if (hash === '#page-spotlight') {
     showSpotlightPage('page-spotlight');
-} else if (hash === '#page-spotlight2') {
-    showSpotlightPage('page-spotlight2');
-} else if (hash === '#page-spotlight3') {
-    showSpotlightPage('page-spotlight3');
 } else if (hash === '#page-csi-indaba') {
     showCSIIndabaPage();
 } else if (hash === '#page-csi-awards') {
@@ -3717,6 +3790,8 @@ if (hash === '#page-contact') {
     showExpertiseAdvisoryPage();
 } else if (hash === '#page-expertise-research') {
     showExpertiseResearchPage();
+} else if (hash === '#page-template') {
+    showTemplatePage();
 } else if (hash === '#page-about') {
     showAboutPage();
 } else if (hash === '#podcast-management') {
@@ -3835,7 +3910,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Randomize particle properties
         const size = Math.random() * 6 + 4;
-        const colors = ['#f5a632', '#f5a623', '#f5a632', '#ff6b9d'];
+        const colors = ['#f5a632', '#e6942c', '#ffa94d', '#ff6b9d'];
         const color = colors[Math.floor(Math.random() * colors.length)];
 
         particle.style.width = size + 'px';
@@ -3865,120 +3940,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* Inline script block 15 */
-// Spotlight V2 Slider Functions
-let currentIndexV2 = 0;
-const totalSlidesV2 = 4;
-const autoPlayDelayV2 = 6000;
-let autoPlayTimerV2;
-let progressTimerV2;
-let progressV2 = 0;
-
-function updateSliderV2() {
-    const slider = document.getElementById('heroSliderV2');
-    if (!slider) return;
-
-    const slides = slider.querySelectorAll('.hero-slide');
-    const dots = slider.querySelectorAll('.slider-dot');
-    const progressBar = document.getElementById('progressBarV2');
-    const currentSlideEl = document.getElementById('currentSlideV2');
-
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === currentIndexV2);
-    });
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndexV2);
-    });
-    if (currentSlideEl) {
-        currentSlideEl.textContent = String(currentIndexV2 + 1).padStart(2, '0');
-    }
-    resetProgressV2();
-}
-
-function nextSlideV2() {
-    currentIndexV2 = (currentIndexV2 + 1) % totalSlidesV2;
-    updateSliderV2();
-}
-
-function prevSlideV2() {
-    currentIndexV2 = (currentIndexV2 - 1 + totalSlidesV2) % totalSlidesV2;
-    updateSliderV2();
-}
-
-function goToSlideV2(index) {
-    currentIndexV2 = index;
-    updateSliderV2();
-    resetAutoPlayV2();
-}
-
-function resetProgressV2() {
-    progressV2 = 0;
-    const progressBar = document.getElementById('progressBarV2');
-    if (progressBar) {
-        progressBar.style.width = '0%';
-    }
-    clearInterval(progressTimerV2);
-    progressTimerV2 = setInterval(() => {
-        progressV2 += 100 / (autoPlayDelayV2 / 50);
-        const progressBar = document.getElementById('progressBarV2');
-        if (progressBar) {
-            progressBar.style.width = Math.min(progressV2, 100) + '%';
-        }
-    }, 50);
-}
-
-function resetAutoPlayV2() {
-    clearInterval(autoPlayTimerV2);
-    autoPlayTimerV2 = setInterval(nextSlideV2, autoPlayDelayV2);
-    resetProgressV2();
-}
-
-// Initialize V2 slider when page-spotlight2 is shown
-function initSliderV2() {
-    const slider = document.getElementById('heroSliderV2');
-    if (!slider) return;
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    slider.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    slider.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) nextSlideV2();
-            else prevSlideV2();
-            resetAutoPlayV2();
-        }
-    }, { passive: true });
-
-    slider.addEventListener('mouseenter', () => clearInterval(autoPlayTimerV2));
-    slider.addEventListener('mouseleave', resetAutoPlayV2);
-
-    resetAutoPlayV2();
-}
-
-// Spotlight version switching function
-function switchSpotlightVersion(version) {
-    if (version === 'v1') {
-        showSpotlightPage('page-spotlight');
-    } else if (version === 'v2') {
-        showSpotlightPage('page-spotlight2');
-        setTimeout(initSliderV2, 100);
-    } else if (version === 'v3') {
-        showSpotlightPage('page-spotlight3');
-    } else if (version === 'v4') {
-        showSpotlightPage('page-spotlight-v4');
-    }
-}
-
 /* Final webinar hash router.
    This block intentionally sits at the end of the file so older extracted
    inline scripts cannot overwrite the webinar routes after page load. */
 (function () {
-    const routedIds = ['page-webinars', 'webinar-01-detail', 'webinar-02-detail', 'page-matter-magazine'];
+    const routedIds = ['page-programs', 'page-webinars', 'webinar-01-detail', 'webinar-02-detail', 'page-matter-magazine'];
 
     function setHash(hash) {
         if (window.location.hash !== hash) {
@@ -4011,11 +3977,13 @@ function switchSpotlightVersion(version) {
         if (!page) return;
 
         hideAllRoutedPages();
-        setSharedSectionsVisibility(['page-webinars', 'webinar-01-detail', 'webinar-02-detail', 'page-matter-magazine'].includes(id));
+        setSharedSectionsVisibility(['page-programs', 'page-webinars', 'webinar-01-detail', 'webinar-02-detail', 'page-matter-magazine'].includes(id));
         page.style.display = 'block';
 
         if (id === 'page-webinars') {
             document.title = 'CSI Webinars - Simphiwe Mtetwa';
+        } else if (id === 'page-programs') {
+            document.title = 'Programmes - Simphiwe Mtetwa';
         } else if (id === 'page-matter-magazine') {
             document.title = 'Matter Magazine - Simphiwe Mtetwa';
             initializeMatterDflip();
@@ -4092,6 +4060,8 @@ function switchSpotlightVersion(version) {
             window.showContactPage();
         } else if (window.location.hash === '#page-csi-indaba' && typeof window.showCSIIndabaPage === 'function') {
             window.showCSIIndabaPage();
+        } else if (window.location.hash === '#page-programs' && typeof window.showProgramsPage === 'function') {
+            window.showProgramsPage();
         } else if (window.location.hash === '#page-matter-magazine' && typeof window.showMatterMagazinePage === 'function') {
             window.showMatterMagazinePage();
         } else if (window.location.hash === '#page-case-studies' && typeof window.showCaseStudiesPage === 'function') {
@@ -4269,9 +4239,12 @@ function switchSpotlightVersion(version) {
         const track = document.getElementById('editionsMarqueeTrack');
         if (!track) return;
 
-        // Clone all cards and append to make seamless loop
+        // Clone all cards and append to make seamless loop.
+        // Cards that embed a (heavy) flipbook host are NOT cloned, so we don't
+        // end up with duplicate Dear Flip book ids / duplicate PDF viewers.
         const originals = Array.from(track.children);
         originals.forEach(card => {
+            if (card.querySelector && card.querySelector('.matter-dflip-host')) return;
             const clone = card.cloneNode(true);
             clone.setAttribute('aria-hidden', 'true');
             track.appendChild(clone);
@@ -4284,3 +4257,31 @@ function switchSpotlightVersion(version) {
         setup();
     }
 })();
+
+/* ===== Mysterious spotlight hover over magazine covers ===== */
+(function initMagazineSpotlight() {
+    const SEL = '.matter-reserve-card, .matter-editor-card, .matter-current-option-cover, .matter-current-feature-cutout, .matter-magazine-page .edition-card-small .edition-cover-img-small';
+
+    function bind(card) {
+        card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+            card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.removeProperty('--mx');
+            card.style.removeProperty('--my');
+        });
+    }
+
+    function setup() {
+        document.querySelectorAll(SEL).forEach(bind);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setup);
+    } else {
+        setup();
+    }
+})();
+
